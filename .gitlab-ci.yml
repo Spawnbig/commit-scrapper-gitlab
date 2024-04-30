@@ -8,16 +8,22 @@ stages:
 
 build:
   stage: build
+  only:
+    - master
   script:
     - mvn compile
 
 test:
   stage: test
+  only:
+    - master
   script:
     - mvn test
 
 compile:
   stage: compile
+  only:
+    - master
   script:
     - mvn package
   artifacts:
@@ -26,6 +32,8 @@ compile:
 
 deploy:
   stage: deploy
+  only:
+    - master
   script:
     - cd target
     - ls
