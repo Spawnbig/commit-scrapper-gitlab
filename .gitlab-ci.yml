@@ -1,0 +1,31 @@
+image: maven:3-openjdk-17
+
+stages:
+  - build
+  - test
+  - compile
+  - deploy
+
+build:
+  stage: build
+  script:
+    - mvn compile
+
+test:
+  stage: test
+  script:
+    - mvn test
+
+compile:
+  stage: compile
+  script:
+    - mvn package
+  artifacts:
+    paths:
+      - target/*.jar
+
+deploy:
+  stage: deploy
+  script:
+    - cd target
+    - ls
